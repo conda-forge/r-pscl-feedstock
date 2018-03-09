@@ -1,4 +1,4 @@
-{% set version = '1.4.9' %}
+{% set version = "1.5.2" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/pscl_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/pscl/pscl_{{ version }}.tar.gz
-  sha256: 0e3a08a5d1ab73b84e4a3b3bb1893d6bf534eb4e53e5ffe80d3ec341ac91d195
+  sha256: 2c9fe648485c6b54c6f95a54b6e00ffe3cf06fa8c5c68f1d669664a7b91a0ede
 
 build:
   number: 0
