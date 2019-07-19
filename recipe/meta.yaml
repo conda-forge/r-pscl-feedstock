@@ -16,7 +16,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 1002
+  number: 1003
   skip: true  # [win32]
 
   rpaths:
@@ -46,6 +46,7 @@ test:
 about:
   home: http://pscl.stanford.edu/
   license: GPL-2
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
   summary: Bayesian analysis of item-response theory (IRT) models, roll call analysis; computing
     highest density regions; maximum likelihood estimation of zero-inflated and hurdle
     models for count data; goodness-of-fit measures for GLMs; data sets used in writing and
@@ -54,8 +55,4 @@ about:
 
 extra:
   recipe-maintainers:
-    - dpryan79
-    - jdblischak
-    - johanneskoester
-    - bgruening
-    - daler
+    - conda-forge/r
