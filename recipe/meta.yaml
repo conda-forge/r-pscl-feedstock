@@ -1,5 +1,4 @@
 {% set version = "1.5.9" %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,48 +7,49 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: pscl_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/pscl_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/pscl/pscl_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/pscl_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/pscl/pscl_{{ version }}.tar.gz
   sha256: 8085ffd1987804793ba44637165fba3e6805aa2f6457f0692b6e641658fe6efe
 
 build:
   merge_build_host: true  # [win]
   number: 0
-  skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-mass
-    - r-lattice
-
   run:
     - r-base
+    - {{ native }}gcc-libs         # [win]
     - r-mass
-    - r-lattice
 
 test:
   commands:
-    - $R -e "library('pscl')"  # [not win]
+    - $R -e "library('pscl')"           # [not win]
     - "\"%R%\" -e \"library('pscl')\""  # [win]
 
 about:
   home: http://pscl.stanford.edu/
   license: GPL-2.0-only
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
   summary: Bayesian analysis of item-response theory (IRT) models, roll call analysis; computing highest density regions; maximum likelihood estimation of zero-inflated and hurdle models for count data; goodness-of-fit measures for GLMs; data sets used in writing and teaching at the Political Science Computational Laboratory;
     seats-votes curves.
   license_family: GPL2
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
