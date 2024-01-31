@@ -9,7 +9,7 @@ About r-pscl
 
 Home: http://pscl.stanford.edu/
 
-Package license: GPL-2
+Package license: GPL-2.0-only
 
 Summary: Bayesian analysis of item-response theory (IRT) models, roll call analysis; computing highest density regions; maximum likelihood estimation of zero-inflated and hurdle models for count data; goodness-of-fit measures for GLMs; data sets used in writing and teaching at the Political Science Computational Laboratory; seats-votes curves.
 
@@ -18,7 +18,7 @@ About r-pscl
 
 Home: http://pscl.stanford.edu/
 
-Package license: GPL-2
+Package license: GPL-2.0-only
 
 Summary: Bayesian analysis of item-response theory (IRT) models, roll call analysis; computing highest density regions; maximum likelihood estimation of zero-inflated and hurdle models for count data; goodness-of-fit measures for GLMs; data sets used in writing and teaching at the Political Science Computational Laboratory; seats-votes curves.
 
